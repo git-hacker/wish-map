@@ -1,0 +1,42 @@
+<style lang="less">
+  #map {
+    width: 100%;
+    height: 300px;
+  }
+</style>
+<template>
+  <view>
+    <map id="map" longtitude="{{longitude}}" latitude="{{latitude}}" scale="14"></map>
+  </view>
+</template>
+<script>
+  import wepy from 'wepy'
+  export default class Map extends wepy.page {
+    data = {
+      title: 'hello world',
+      longitude: 104.04311,
+      latitude: 30.64242
+    }
+    onLoad () {
+      this.setCurrentLocation()
+    }
+    setCurrentLocation () {
+      wepy.getLocation({
+        type: 'gcj02',
+        success: function(res) {
+          wepy.openLocation({
+            latitude: res.latitude,
+            longitude: res.longitude,
+            scale: 28
+          })
+          // this.latitude = res.latitude
+          // this.longtitude = res.longitude
+          console.log(res.latitude)
+          console.log(res.longitude)
+          // console.log(this.latitude)
+          // console.log(this.longtitude)
+        }
+      })
+    }
+  }
+</script>

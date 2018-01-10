@@ -1,1 +1,1 @@
-{"pages":["pages/index"],"window":{"backgroundTextStyle":"light","navigationBarBackgroundColor":"#fff","navigationBarTitleText":"WeChat","navigationBarTextStyle":"black"}}
+{"pages":["pages/index","pages/map"],"window":{"backgroundTextStyle":"light","navigationBarBackgroundColor":"#fff","navigationBarTitleText":"WeChat","navigationBarTextStyle":"black"},"tabBar":{"list":[{"pagePath":"pages/index","text":"首页"},{"pagePath":"pages/map","text":"地图"}]},"networkTimeout":{"request":10000,"downloadFile":10000},"debug":true}
