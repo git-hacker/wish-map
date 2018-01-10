@@ -1,0 +1,27 @@
+<style lang="less">
+</style>
+<template>
+  <view class="container">
+    <text>我的心愿列表</text>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+
+  export default class Profile extends wepy.page {
+    config = {
+      navigationBarTitleText: '我的心愿'
+    }
+    components = {
+    }
+    data = {
+    }
+    computed = {
+    }
+    methods = {
+    }
+    onLoad() {
+    }
+  }
+</script>

@@ -16,8 +16,8 @@
   export default class extends wepy.app {
     config = {
       'pages': [
-        'pages/index',
-        'pages/map'
+        'pages/wishmap',
+        'pages/profile'
       ],
       'window': {
         'backgroundTextStyle': 'light',
@@ -28,12 +28,12 @@
       'tabBar': {
         'list': [
           {
-            'pagePath': 'pages/index',
-            'text': '首页'
+            'pagePath': 'pages/wishmap',
+            'text': '心愿地图'
           },
           {
-            'pagePath': 'pages/map',
-            'text': '地图'
+            'pagePath': 'pages/profile',
+            'text': '我的心愿'
           }
         ]
       },

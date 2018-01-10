@@ -1,0 +1,34 @@
+<style lang="less">
+</style>
+<template>
+  <view class="container">
+    <text>发起你的心愿，让周围更美好</text>
+    <wish-map></wish-map>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  import Map from '../components/map'
+
+  export default class Wishmap extends wepy.page {
+    config = {
+      navigationBarTitleText: '心愿地图'
+    }
+    components = {
+      'wish-map': Map
+    }
+
+    data = {
+    }
+
+    computed = {
+    }
+
+    methods = {
+    }
+
+    onLoad() {
+    }
+  }
+</script>

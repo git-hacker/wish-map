@@ -1,0 +1,63 @@
+<template>
+  <view class="wrapper">
+    <map id="map" longitude="{{longitude}}" latitude="{{latitude}}" markers="{{markers}}" scale="14"></map>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  export default class Map extends wepy.component {
+    data = {
+      longitude: 110,
+      latitude: 29,
+      markers: [{
+        iconPath: '/static/img/heart.png',
+        id: 0,
+        latitude: 30.5702,
+        longitude: 104.06476
+      },
+      {
+        iconPath: '/static/img/heart.png',
+        id: 1,
+        latitude: 30.5812,
+        longitude: 104.07486
+      },
+      {
+        iconPath: '/static/img/star.png',
+        id: 2,
+        latitude: 30.5512,
+        longitude: 104.07486
+      },
+      {
+        iconPath: '/static/img/star.png',
+        id: 3,
+        latitude: 30.5512,
+        longitude: 104.05486
+      } ]
+    }
+    onLoad () {
+      this.setCurrentLocation()
+    }
+    setCurrentLocation () {
+      wepy.getLocation({
+        type: 'gcj02',
+        success: (res) => {
+          this.longitude = res.longitude
+          this.latitude = res.latitude
+          this.$apply()
+        }
+      })
+    }
+  }
+</script>
+
+<style lang="less">
+  #map {
+    width: 100%;
+    height: 500px;
+  }
+  .wrapper{
+    width: 100%;
+    height: 100%;
+  }
+</style>
