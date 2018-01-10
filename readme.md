@@ -11,6 +11,7 @@ npm install wepy-cli -g
 ```
     git clone  https://github.com/cfc2018/wx-cdWant.git
     cd wx-cdWant
+    npm install
 ```
 
 #### 开发实时编译
