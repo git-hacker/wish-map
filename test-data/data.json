@@ -1,0 +1,25 @@
+[
+    {
+        "ID":1,
+        "user-id": "xxxxxx",
+        "wish-title": "xxxx",
+        "wish-type": "xxx",
+        "wish-desc": "xxxxxx",
+        "bannar-url":"xxxxx",
+        "img-urls": [
+            "xxxx",
+            "xxxx",
+        ],
+        "status": "待解决/解决中/已完成",
+        "solutions": [
+            {
+                "solution-desc": "xxxxx",
+                "is-choose": "true/false"
+            }
+        ],
+        "geo": {
+            "latitude":"xxx",
+            "longitude": "xxx"
+        }
+    }
+]
