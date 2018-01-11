@@ -13,3 +13,5 @@ lerna-debug.log
 .idea
 /yarn.lock
 /dist
+/backend/db.sqlite3
+*.pyc
