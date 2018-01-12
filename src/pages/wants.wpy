@@ -20,7 +20,7 @@
 
   export default class Wants extends wepy.page {
     config = {
-      navigationBarTitleText: '个人中心'
+      navigationBarTitleText: '我的心愿'
     }
 
     components = {

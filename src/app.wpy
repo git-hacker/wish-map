@@ -20,7 +20,8 @@
         'pages/wishmap',
         'pages/profile',
         'pages/me',
-        'pages/wants'
+        'pages/wants',
+        'pages/addwish'
       ],
       'window': {
         'backgroundTextStyle': 'light',
@@ -41,6 +42,10 @@
           {
             'pagePath': 'pages/me',
             'text': '个人中心'
+          },
+          {
+            'pagePath': 'pages/addwish',
+            'text': '发布心愿'
           }
         ]
       },
