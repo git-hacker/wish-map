@@ -25,7 +25,7 @@ SECRET_KEY = '9*$7$=zgcigoge^yx05ie7*na#b_e=9pwpyeols4!w5wj)=tbf'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['cfc.ttoo.me', ]
 
 
 # Application definition
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'wish',
 ]
 
 MIDDLEWARE = [
