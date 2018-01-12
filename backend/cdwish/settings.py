@@ -25,7 +25,7 @@ SECRET_KEY = '9*$7$=zgcigoge^yx05ie7*na#b_e=9pwpyeols4!w5wj)=tbf'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['cfc.ttoo.me', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['cfc.fctoo.com', '127.0.0.1', 'localhost']
 
 
 # Application definition
