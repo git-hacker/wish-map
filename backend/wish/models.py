@@ -10,7 +10,7 @@ class MPUser(models.Model):
     long = models.FloatField(default=0)
     lat = models.FloatField(default=0)
 
-    def __str__(self):
+    def __unicode__(self):
         return self.name
 
 
@@ -26,5 +26,5 @@ class Wish(models.Model):
     long = models.FloatField(default=0)
     lat = models.FloatField(default=0)
 
-    def __str__(self):
+    def __unicode__(self):
         return self.title
