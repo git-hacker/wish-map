@@ -7,8 +7,8 @@ from django.db import models
 class MPUser(models.Model):
     name = models.CharField(max_length=100, blank=True)
     wx_id = models.CharField(max_length=100, blank=True)
-    long = models.FloatField(blank=True)
-    lat = models.FloatField(blank=True)
+    long = models.FloatField(default=0)
+    lat = models.FloatField(default=0)
 
     def __str__(self):
         return self.name
@@ -23,8 +23,8 @@ class Wish(models.Model):
     title = models.CharField(max_length=700)
     detail = models.TextField(blank=True)
     status = models.CharField(max_length=10, choices=WISH_STATUS_CHOICES, default=WISH_STATUS_CHOICES[0])
-    long = models.FloatField(blank=True)
-    lat = models.FloatField(blank=True)
+    long = models.FloatField(default=0)
+    lat = models.FloatField(default=0)
 
     def __str__(self):
         return self.title
