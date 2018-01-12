@@ -1,6 +1,6 @@
 <template>
   <view class="wrapper">
-    <map id="map" longitude="{{longitude}}" latitude="{{latitude}}" markers="{{markers}}" scale="14"></map>
+    <map id="map" scale="{{mapData.scale}}" longitude="{{mapData.longitude}}" latitude="{{mapData.latitude}}" markers="{{mapData.markers}}" controls="{{mapData.controls}}" bindcontroltap="controltap"></map>
   </view>
 </template>
 
@@ -8,42 +8,78 @@
   import wepy from 'wepy'
   export default class Map extends wepy.component {
     data = {
-      longitude: 110,
-      latitude: 29,
-      markers: [{
-        iconPath: '/static/img/heart.png',
-        id: 0,
-        latitude: 30.5702,
-        longitude: 104.06476
-      },
-      {
-        iconPath: '/static/img/heart.png',
-        id: 1,
-        latitude: 30.5812,
-        longitude: 104.07486
-      },
-      {
-        iconPath: '/static/img/star.png',
-        id: 2,
-        latitude: 30.5512,
-        longitude: 104.07486
-      },
-      {
-        iconPath: '/static/img/star.png',
-        id: 3,
-        latitude: 30.5512,
-        longitude: 104.05486
-      } ]
+      mapData: {
+        longitude: 110,
+        latitude: 29,
+        scale: 14,
+        markers: [{
+          iconPath: '/static/img/heart.png',
+          id: 0,
+          latitude: 30.5702,
+          longitude: 104.06476
+        },
+        {
+          iconPath: '/static/img/heart.png',
+          id: 1,
+          latitude: 30.5812,
+          longitude: 104.07486
+        },
+        {
+          iconPath: '/static/img/star.png',
+          id: 2,
+          latitude: 30.5512,
+          longitude: 104.07486
+        },
+        {
+          iconPath: '/static/img/star.png',
+          id: 3,
+          latitude: 30.5512,
+          longitude: 104.05486
+        }],
+        controls: [{
+          id: 0,
+          iconPath: '/static/img/plus.png',
+          position: {
+            left: 10,
+            top: 10,
+            width: 20,
+            height: 20
+          },
+          clickable: true
+        },
+        {
+          id: 1,
+          iconPath: '/static/img/reduce.png',
+          position: {
+            left: 40,
+            top: 10,
+            width: 20,
+            height: 20
+          },
+          clickable: true
+        }]
+      }
+    }
+    methods = {
+      controltap (e) {
+        if (e.controlId === 0) {
+          this.mapData.scale++
+        } else {
+          this.mapData.scale--
+        }
+        this.$apply()
+      }
     }
     onLoad () {
       this.setCurrentLocation()
     }
+
     setCurrentLocation () {
       wepy.getLocation({
         type: 'gcj02',
         success: (res) => {
-          this.longitude = res.longitude
-          this.latitude = res.latitude
+          this.mapData.longitude = res.longitude
+          this.mapData.latitude = res.latitude
           this.$apply()
         }
       })
