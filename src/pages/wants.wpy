@@ -1,0 +1,82 @@
+<style lang="less">
+
+</style>
+
+<template>
+  <view class="page">
+    <view class="weui-cells weui-cells_after-title">
+      <repeat for="{{list}}" key="index" index="index" item="item">
+        <view class="weui-cell">
+        <wantItem :item="item"></wantItem>
+        </view>
+      </repeat>
+    </view>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  import wantItem from '../components/wantItem'
+
+  export default class Wants extends wepy.page {
+    config = {
+      navigationBarTitleText: '个人中心'
+    }
+
+    components = {
+      'wantItem': wantItem
+    }
+
+    data = {
+      list: [
+        {
+          id: 1,
+          img: '../images/icon_nav_01.png',
+          tag: '环保回收',
+          title: '社区附近xxx',
+          status: '待解决',
+          content: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+          location: '李家沱',
+          star: 54
+        },
+        {
+          id: 2,
+          img: '../images/icon_nav_02.png',
+          tag: '关爱动物',
+          title: '社区附近yyy',
+          status: '解决中',
+          content: 'yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy',
+          location: '李家沱2',
+          star: 55
+        },
+        {
+          id: 3,
+          img: '../images/icon_nav_03.png',
+          tag: '人文娱乐',
+          title: '社区附近zzz',
+          status: '审核中',
+          content: 'zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz',
+          location: '李家沱3',
+          star: 5
+        },
+        {
+          id: 4,
+          img: '../images/icon_nav_04.png',
+          tag: '环保回收',
+          title: '社区附近aaa',
+          status: '已解决',
+          content: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+          location: '李家沱4',
+          star: 23
+        }
+      ]
+    }
+
+    computed = {}
+
+    methods = {}
+
+    onLoad() {
+    }
+  }
+</script>

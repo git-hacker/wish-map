@@ -1,9 +1,0 @@
-
-  <view class="container">
-    <text>发起你的心愿，让周围更美好</text>
-    
-  <view class="wrapper">
-    <map id="map" longitude="{{$wishMap$longitude}}" latitude="{{$wishMap$latitude}}" markers="{{$wishMap$markers}}" scale="14"/>
-  </view>
-
-  </view>
