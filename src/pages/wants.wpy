@@ -26,48 +26,47 @@
     components = {
       'wantItem': wantItem
     }
-
     data = {
       list: [
         {
-          id: 1,
-          img: '../images/icon_nav_01.png',
-          tag: '环保回收',
-          title: '社区附近xxx',
+          ID: 1,
+          bannar_url: '../images/icon_nav_01.png',
+          wish_type: '环保回收',
+          wish_title: '社区附近xxx',
           status: '待解决',
-          content: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+          wish_desc: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
           location: '李家沱',
-          star: 54
+          stars: 54
         },
         {
-          id: 2,
-          img: '../images/icon_nav_02.png',
-          tag: '关爱动物',
-          title: '社区附近yyy',
+          ID: 2,
+          bannar_url: '../images/icon_nav_02.png',
+          wish_type: '关爱动物',
+          wish_title: '社区附近yyy',
           status: '解决中',
-          content: 'yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy',
+          wish_desc: 'yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy',
           location: '李家沱2',
-          star: 55
+          stars: 55
         },
         {
-          id: 3,
-          img: '../images/icon_nav_03.png',
-          tag: '人文娱乐',
-          title: '社区附近zzz',
+          ID: 3,
+          bannar_url: '../images/icon_nav_03.png',
+          wish_type: '人文娱乐',
+          wish_title: '社区附近zzz',
           status: '审核中',
-          content: 'zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz',
+          wish_desc: 'zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz',
           location: '李家沱3',
-          star: 5
+          stars: 5
         },
         {
-          id: 4,
-          img: '../images/icon_nav_04.png',
-          tag: '环保回收',
-          title: '社区附近aaa',
+          ID: 4,
+          bannar_url: '../images/icon_nav_04.png',
+          wish_type: '环保回收',
+          wish_title: '社区附近aaa',
           status: '已解决',
-          content: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+          wish_desc: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
           location: '李家沱4',
-          star: 23
+          stars: 23
         }
       ]
     }

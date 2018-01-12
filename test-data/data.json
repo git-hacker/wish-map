@@ -1,25 +1,27 @@
 [
-    {
-        "ID":1,
-        "user-id": "xxxxxx",
-        "wish-title": "xxxx",
-        "wish-type": "xxx",
-        "wish-desc": "xxxxxx",
-        "bannar-url":"xxxxx",
-        "img-urls": [
-            "xxxx",
-            "xxxx",
-        ],
-        "status": "待解决/解决中/已完成",
-        "solutions": [
-            {
-                "solution-desc": "xxxxx",
-                "is-choose": "true/false"
-            }
-        ],
-        "geo": {
-            "latitude":"xxx",
-            "longitude": "xxx"
-        }
+  {
+    "ID": 1,
+    "user_id": "xxxxxx",
+    "wish_title": "xxxx",
+    "wish_type": "xxx",
+    "wish_desc": "xxxxxx",
+    "bannar_url": "xxxxx",
+    "img_urls": [
+      "xxxx",
+      "xxxx"
+    ],
+    "status": "待解决/解决中/已完成",
+    "location": "李家沱",
+    "stars": 54,
+    "solutions": [
+      {
+        "solution_desc": "xxxxx",
+        "is_choose": "true/false"
+      }
+    ],
+    "geo": {
+      "latitude": "xxx",
+      "longitude": "xxx"
     }
+  }
 ]
