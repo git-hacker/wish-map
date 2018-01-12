@@ -1,4 +1,8 @@
 <style lang="less">
+  .container {
+    width:100%;
+  
+  }
 </style>
 <template>
   <view class="container">

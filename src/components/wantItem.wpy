@@ -4,14 +4,14 @@
       <view class="weui-flex">
         <view class="weui-flex__item">
           <view class="placeholder">
-            <image class="itemImage" src={{item.bannar_url}}></image>
+            <image class="itemImage" src="{{item.bannar_url}}"/>
             {{item.wish_type}}
           </view>
         </view>
         <view class="weui-flex__item">
           <view class="placeholder">
-            {{item.wish_title}}{{item.status}}<br>
-            {{item.wish_desc}}<br>
+            {{item.wish_title}}{{item.status}}<br/>
+            {{item.wish_desc}}<br/>
             {{item.location}}{{item.stars}}
           </view>
         </view>

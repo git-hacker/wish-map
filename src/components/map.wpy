@@ -1,41 +1,34 @@
 <template>
   <view class="wrapper">
-    <map id="map" scale="{{mapData.scale}}" longitude="{{mapData.longitude}}" latitude="{{mapData.latitude}}" markers="{{mapData.markers}}" controls="{{mapData.controls}}" bindcontroltap="controltap"></map>
+    <map id="map" 
+      scale="{{mapData.scale}}" 
+      longitude="{{mapData.longitude}}" 
+      latitude="{{mapData.latitude}}" 
+      markers="{{mapData.markers}}" 
+      controls="{{mapData.controls}}" 
+      bindcontroltap="controltap" 
+      bindmarkertap="markerTap"
+      bindtap="mapTap">
+    </map>
+    <wish-desc wx:if="{{showDesc}}"></wish-desc>
   </view>
 </template>
 
 <script>
   import wepy from 'wepy'
+  import testData from './data'
+  import wishDesc from './wishdesc'
   export default class Map extends wepy.component {
+    components = {
+      'wish-desc': wishDesc
+    }
     data = {
+      showDesc: false,
       mapData: {
-        longitude: 110,
-        latitude: 29,
+        longitude: 0,
+        latitude: 0,
         scale: 14,
-        markers: [{
-          iconPath: '/static/img/heart.png',
-          id: 0,
-          latitude: 30.5702,
-          longitude: 104.06476
-        },
-        {
-          iconPath: '/static/img/heart.png',
-          id: 1,
-          latitude: 30.5812,
-          longitude: 104.07486
-        },
-        {
-          iconPath: '/static/img/star.png',
-          id: 2,
-          latitude: 30.5512,
-          longitude: 104.07486
-        },
-        {
-          iconPath: '/static/img/star.png',
-          id: 3,
-          latitude: 30.5512,
-          longitude: 104.05486
-        }],
+        markers: [],
         controls: [{
           id: 0,
           iconPath: '/static/img/plus.png',
@@ -68,12 +61,47 @@
           this.mapData.scale--
         }
         this.$apply()
+      },
+      markerTap (e) {
+        this.mapData.markers.find((element) => {
+          if (element.id === e.markerId) {
+            this.mapData.latitude = element.latitude
+            this.mapData.longitude = element.longitude
+            return true
+          }
+          return false
+        })
+        this.showDesc = true
+        this.$apply()
+      },
+      mapTap() {
+        this.showDesc = false
+        this.$apply()
       }
+
     }
     onLoad () {
       this.setCurrentLocation()
+      this.initMarker()
     }
-
+    initMarker() {
+      testData.forEach((element) => {
+        let marker = {
+          id: element.id,
+          latitude: element.geo.latitude,
+          longitude: element.geo.longitude
+        }
+        if (element.statu === '待解决') {
+          marker.iconPath = '/static/img/heart.png'
+        } else if (element.statu === '解决中') {
+          marker.iconPath = '/static/img/star.png'
+        } else {
+          return null
+        }
+        this.mapData.markers.push(marker)
+      })
+      this.$apply()
+    }
     setCurrentLocation () {
       wepy.getLocation({
         type: 'gcj02',
