@@ -1,1 +1,0 @@
-{"pages":["pages/wishmap","pages/profile"],"window":{"backgroundTextStyle":"light","navigationBarBackgroundColor":"#fff","navigationBarTitleText":"WeChat","navigationBarTextStyle":"black"},"tabBar":{"list":[{"pagePath":"pages/wishmap","text":"心愿地图"},{"pagePath":"pages/profile","text":"我的心愿"}]},"networkTimeout":{"request":10000,"downloadFile":10000},"debug":true}

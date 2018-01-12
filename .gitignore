@@ -12,4 +12,4 @@ lerna-debug.log
 .DS_Store
 .idea
 /yarn.lock
-/dist
+dist/

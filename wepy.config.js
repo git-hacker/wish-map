@@ -22,9 +22,9 @@ module.exports = {
     less: {
       compress: true
     },
-    /*sass: {
+    sass: {
       outputStyle: 'compressed'
-    },*/
+    },
     babel: {
       sourceMap: true,
       presets: [
@@ -38,8 +38,7 @@ module.exports = {
       ]
     }
   },
-  plugins: {
-  },
+  plugins: {},
   appConfig: {
     noPromiseAPI: ['createSelectorQuery']
   }
@@ -58,8 +57,7 @@ if (prod) {
   module.exports.plugins = {
     uglifyjs: {
       filter: /\.js$/,
-      config: {
-      }
+      config: {}
     },
     imagemin: {
       filter: /\.(jpg|png|jpeg)$/,

@@ -1,0 +1,101 @@
+<style lang="less">
+
+  .header_content {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  .avatarUrl {
+    width: 100px;
+    height: 100px;
+    border-radius: 1000px;
+  }
+
+  .nickName {
+    font-size: 15px;
+    padding-top: 8px;
+  }
+
+  .listImage {
+    margin-right: 5px;
+    vertical-align: middle;
+    width: 20px;
+    height: 20px;
+  }
+</style>
+
+<template>
+  <view class="page">
+    <view class="header_content">
+      <image class="avatarUrl" src="{{userInfo.avatarUrl}}"></image>
+      <view class="nickName">{{userInfo.nickName}}</view>
+    </view>
+
+    <view class="weui-cells weui-cells_after-title">
+      <navigator url="/pages/wants" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__hd">
+          <image class="listImage" src="../images/icon_my_02.png"></image>
+        </view>
+        <view class="weui-cell__bd">我的心愿</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access">{{wantCnt}}</view>
+      </navigator>
+      <navigator url="/pages/concerns" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__hd">
+          <image class="listImage" src="../images/icon_my_02.png"></image>
+        </view>
+        <view class="weui-cell__bd">关注心愿</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access">{{consernCnt}}</view>
+      </navigator>
+      <navigator url="/pages/resolves" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__hd">
+          <image class="listImage" src="../images/icon_my_03.png"></image>
+        </view>
+        <view class="weui-cell__bd">我的解决方案</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access">{{resolveCnt}}</view>
+      </navigator>
+      <navigator url="/pages/joins" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__hd">
+          <image class="listImage" src="../images/icon_my_04.png"></image>
+        </view>
+        <view class="weui-cell__bd">我参与的方案</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access">{{joinCnt}}</view>
+      </navigator>
+    </view>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+
+  export default class Me extends wepy.page {
+    config = {
+      navigationBarTitleText: '个人中心'
+    }
+
+    components = {}
+
+    data = {
+      userInfo: {},
+      wantCnt: 6,
+      consernCnt: 44,
+      resolveCnt: 2,
+      joinCnt: 2
+    }
+
+    computed = {}
+
+    methods = {}
+
+    onLoad() {
+      wepy.getUserInfo({
+        success: (res) => {
+          this.userInfo = res.userInfo
+          this.$apply()
+        }
+      })
+    }
+  }
+</script>

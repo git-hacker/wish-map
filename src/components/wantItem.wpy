@@ -1,0 +1,47 @@
+<template>
+  <view class="wrapper">
+    <navigator url="/pages/wantDetail" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <view class="weui-cell__hd">
+        <image class="itemImage" src={{item.img}}></image>
+      </view>
+      <view class="weui-cell__bd">{{item.title}}</view>
+      <view class="weui-cell__ft weui-cell__ft_in-access">{{item.content}}</view>
+    </navigator>
+  </view>
+</template>
+
+<!--id: 1,-->
+<!--img: '../images/icon_nav_01.png',-->
+<!--tag: '环保回收',-->
+<!--title: '社区附近xxx',-->
+<!--status: '待解决',-->
+<!--content: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',-->
+<!--location: '李家沱',-->
+<!--star: 54-->
+
+<script>
+  import wepy from 'wepy'
+
+  export default class Map extends wepy.component {
+    data = {
+      item: {}
+    }
+
+    onLoad() {
+    }
+  }
+</script>
+
+<style lang="less">
+  .wrapper {
+    width: 100%;
+    height: 100%;
+  }
+
+  .itemImage {
+    margin-right: 5px;
+    vertical-align: middle;
+    width: 20px;
+    height: 20px;
+  }
+</style>
