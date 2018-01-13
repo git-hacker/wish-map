@@ -4,11 +4,13 @@ const data = [
     'user_id': '54321',
     'wish_title': '小区遛狗不栓狗',
     'wish_type': '关爱动物',
-    'wish_desc': '近日，有市民反应不栓狗',
+    'wish_desc': '近日，有市民反应不栓狗。近日，有市民反应不栓狗。近日，有市民反应不栓狗。近日，有市民反应不栓狗。近日，有市民反应不栓狗。近日，有市民反应不栓狗。近日，有市民反应不栓狗。',
     'bannar_url': 'banner.jpg',
     'img_urls': [
-      'img1.png',
-      'img2.png'
+      '/static/img/test3.png',
+      '/static/img/test2.jpg',
+      '/static/img/test1.jpg',
+      '/static/img/bannar.jpg'
     ],
     'statu': '解决中',
     'location': '倪家桥',
@@ -30,15 +32,16 @@ const data = [
     'user_id': '12345',
     'wish_title': '社区附近公园乱扔垃圾现象严重',
     'wish_type': '环保回收',
-    'wish_desc': '近日，有市民反应乱扔垃圾现象严重',
-    'bannar_url': 'banner.jpg',
+    'wish_desc': '近日，有市民反应乱扔垃圾现象严重。近日，有市民反应乱扔垃圾现象严重。近日，有市民反应乱扔垃圾现象严重。近日，有市民反应乱扔垃圾现象严重。近日，有市民反应乱扔垃圾现象严重。近日，有市民反应乱扔垃圾现象严重。',
     'img_urls': [
-      'img1.png',
-      'img2.png'
+      '/static/img/bannar.jpg',
+      '/static/img/test1.jpg',
+      '/static/img/test2.jpg',
+      '/static/img/test3.png'
     ],
     'statu': '待解决',
     'location': '李家沱',
-    'stars': 54,
+    'stars': 34,
     'solutions': [
       {
         'solution_desc': '多设置垃圾桶',
@@ -59,8 +62,8 @@ const data = [
     'wish_desc': '近日，有市民反应乱扔垃圾现象严重',
     'bannar_url': 'banner.jpg',
     'img_urls': [
-      'img1.png',
-      'img2.png'
+      '/static/img/bannar.jpg',
+      '/static/img/bannar.jpg'
     ],
     'statu': '已完成',
     'location': '李家沱',
@@ -73,8 +76,8 @@ const data = [
       }
     ],
     'geo': {
-      'latitude': 30.5702,
-      'longitude': 104.07486
+      'latitude': 30.5502,
+      'longitude': 104.05486
     }
   }
 ]

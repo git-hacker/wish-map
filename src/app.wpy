@@ -21,7 +21,8 @@
         'pages/profile',
         'pages/me',
         'pages/wants',
-        'pages/addwish'
+        'pages/addwish',
+        'pages/wishdetail'
       ],
       'window': {
         'backgroundTextStyle': 'light',
@@ -37,16 +38,8 @@
             'text': '心愿地图'
           },
           {
-            'pagePath': 'pages/profile',
-            'text': '我的心愿'
-          },
-          {
             'pagePath': 'pages/me',
             'text': '个人中心'
-          },
-          {
-            'pagePath': 'pages/addwish',
-            'text': '发布心愿'
           }
         ]
       },

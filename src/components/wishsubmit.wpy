@@ -1,0 +1,32 @@
+<template>
+    <view class="bottom-button">
+        <button class="weui-btn" type="default" bindtap="buttonTap">
+            发布心愿
+        </button>
+    </view>
+</template>
+
+<script>
+    import wepy from 'wepy'
+    export default class wishsubmit extends wepy.component {
+      data= {
+      }
+      methods ={
+        buttonTap (e) {
+          wepy.navigateTo({
+            url: '/pages/addwish'
+          })
+        }
+      }
+    }
+</script>
+<style lang="less">
+    .bottom-button{
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        height: 45.6px;
+        background-color: #fefefe;
+    }
+    
+</style>

@@ -1,0 +1,66 @@
+<template>
+  <view>
+    <view class="bigbanner">
+      <image src="{{currentWish.img_urls[0]}}"/>
+    </view>
+    <view class="weui-article">
+      <view class="weui-article__h1">  {{currentWish.wish_title}}</view>
+       <view class="weui-article__p content_desc">
+          {{currentWish.wish_desc}}
+        </view>
+        <view class="weui-article__p">
+          <image class="weui-article__img detail_img"  wx:for="{{currentWish.img_urls}}" wx:if="{{index!==0}}" src="{{item}}"/>
+        </view>
+    </view>
+    <view class="weui-flex bottom-button">
+      <view style="width:30%;margin-right:5%">
+          <button type="default" >关注</button>
+      </view>
+      <view style="width:70%"  class="weui-flex__item">
+          <button type="default">提供解决方案</button>
+      </view>
+    </view>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  import testData from '../components/data'
+  export default class Wishdetail extends wepy.page {
+    data= {
+      currentWish: {}
+    }
+    onLoad(query) {
+      this.currentWish = testData.find((element) => {
+        return element.id.toString() === query.wishId
+      })
+    }
+  }
+</script>
+
+<style lang="less">
+  .bigbanner{
+    height: 33vh;
+    width: 100%;
+    image {
+      height: 100%;
+      width: 100%;
+    }
+  }
+  .content_desc {
+    font-size: .8rem;
+    color: #808080;
+  }
+  .detail_img {
+    height:130px;
+    width:45%;
+    margin:2.5%
+  }
+  .bottom-button{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 45.6px;
+    background-color: #fefefe;
+  }
+</style>

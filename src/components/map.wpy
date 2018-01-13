@@ -8,9 +8,11 @@
       controls="{{mapData.controls}}" 
       bindcontroltap="controltap" 
       bindmarkertap="markerTap"
-      bindtap="mapTap">
+      bindtap="mapTap"
+      bindregionchange="mapTap">
     </map>
-    <wish-desc wx:if="{{showDesc}}"></wish-desc>
+    <wish-submit wx:if="{{!showDesc}}"></wish-submit>
+    <wish-desc wx:if="{{showDesc}}" :syncWish.sync="currentMarker"></wish-desc>
   </view>
 </template>
 
@@ -18,12 +20,15 @@
   import wepy from 'wepy'
   import testData from './data'
   import wishDesc from './wishdesc'
+  import wishSubmit from './wishsubmit'
   export default class Map extends wepy.component {
     components = {
-      'wish-desc': wishDesc
+      'wish-desc': wishDesc,
+      'wish-submit': wishSubmit
     }
     data = {
       showDesc: false,
+      currentMarker: {wish_title: 'abc'},
       mapData: {
         longitude: 0,
         latitude: 0,
@@ -63,16 +68,18 @@
         this.$apply()
       },
       markerTap (e) {
-        this.mapData.markers.find((element) => {
-          if (element.id === e.markerId) {
-            this.mapData.latitude = element.latitude
-            this.mapData.longitude = element.longitude
-            return true
-          }
-          return false
+        let currentMarker = testData.find((element) => {
+          return element.id === e.markerId
         })
-        this.showDesc = true
-        this.$apply()
+        if (currentMarker) {
+          this.mapData.latitude = 0
+          this.$apply()
+          this.mapData.latitude = currentMarker.geo.latitude
+          this.mapData.longitude = currentMarker.geo.longitude
+          this.currentMarker = currentMarker
+          this.$apply()
+          this.showDesc = true
+        }
       },
       mapTap() {
         this.showDesc = false
@@ -118,7 +125,7 @@
 <style lang="less">
   #map {
     width: 100%;
-    height: 500px;
+    height: 100vh;
   }
   .wrapper{
     width: 100%;

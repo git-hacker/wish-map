@@ -1,19 +1,21 @@
 <template>
-    <view class="bottom-pop">
+    <view class="bottom-pop" bindtap="handleTap">
         <view class="weui-flex">
             <view>
               <view class="placeholder">
-                <image  class="bannar"  mode="aspectFill" src="/static/img/bannar.jpg"/>
+                <image  class="bannar"  mode="aspectFill" src="{{syncWish.img_urls[0]}}"/>
               </view>
             </view>
             <view class="weui-flex__item">
               <view class="placeholder">
                 <view class="weui-article">
-                  <view class="weui-article__h4">社区附近公园乱扔垃圾现象严重</view>
-                  <view class="weui-article__p content">
-                      建议多设垃圾桶，多设不要随处乱扔垃圾的标语，流浪狗同意拉到救助站。建议多设垃圾桶，多设不要随处乱扔垃圾的标语，流浪狗同意拉到救助站。建议多设垃圾桶，多设不要随处乱扔垃圾的标语，流浪狗同意拉到救助站。
+                  <view class="weui-article__h4">
+                    {{syncWish.wish_title}}
                   </view>
-                  <view class="label">&#x2605; 57</view>
+                  <view class="weui-article__p content">
+                      {{syncWish.wish_desc}}
+                  </view>
+                  <view class="label">&#x2605; {{syncWish.stars}}</view>
                 </view>
               </view>
             </view>
@@ -24,15 +26,32 @@
 <script>
     import wepy from 'wepy'
     export default class wishdesc extends wepy.component {
-      data= {
-        title: '哈哈哈'
+      props = {
+        syncWish: {
+          type: Object,
+          default: {}
+        }
+      }
+      data = {
+        title: '',
+        desc: '',
+        bannar: '',
+        star: 0
+      }
+      methods = {
+        handleTap (e) {
+          wepy.navigateTo({
+            url: `/pages/wishdetail?wishId=${this.syncWish.id}`
+          })
+        }
       }
     }
 </script>
 <style lang="less">
     .bottom-pop{
+        border-top: 1px solid #cccccc;
         position: fixed;
-        bottom: 10%;
+        bottom: 0;
         width: 100%;
         height: 130px;
         background-color: #fefefe;
@@ -43,8 +62,8 @@
       margin: 20px 5px 20px 5px;
     }
     .content {
-      height: 2.7rem;
-      line-height: .9rem;
+      height: 2.4rem;
+      line-height: .8rem;
       font-size: .6rem;
       overflow : hidden;
       text-overflow: ellipsis;
