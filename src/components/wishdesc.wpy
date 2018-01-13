@@ -1,6 +1,23 @@
 <template>
     <view class="bottom-pop">
-        {{title}}
+        <view class="weui-flex">
+            <view>
+              <view class="placeholder">
+                <image  class="bannar"  mode="aspectFill" src="/static/img/bannar.jpg"/>
+              </view>
+            </view>
+            <view class="weui-flex__item">
+              <view class="placeholder">
+                <view class="weui-article">
+                  <view class="weui-article__h4">社区附近公园乱扔垃圾现象严重</view>
+                  <view class="weui-article__p content">
+                      建议多设垃圾桶，多设不要随处乱扔垃圾的标语，流浪狗同意拉到救助站。建议多设垃圾桶，多设不要随处乱扔垃圾的标语，流浪狗同意拉到救助站。建议多设垃圾桶，多设不要随处乱扔垃圾的标语，流浪狗同意拉到救助站。
+                  </view>
+                  <view class="label">&#x2605; 57</view>
+                </view>
+              </view>
+            </view>
+        </view>
     </view>
 </template>
 
@@ -12,12 +29,36 @@
       }
     }
 </script>
-<style>
+<style lang="less">
     .bottom-pop{
         position: fixed;
-        bottom: 0px;
+        bottom: 10%;
         width: 100%;
-        height: 100px;
-        background-color: #FEFEFE
+        height: 130px;
+        background-color: #fefefe;
     }
+    .bannar {
+      width: 90px;
+      height: 90px;
+      margin: 20px 5px 20px 5px;
+    }
+    .content {
+      height: 2.7rem;
+      line-height: .9rem;
+      font-size: .6rem;
+      overflow : hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      color: #808080
+    }
+    .label {
+      color: #808080;
+      font-size: .6rem;
+    }
+    .weui-article {
+      padding-right: 2.5rem;
+    }
+
 </style>
