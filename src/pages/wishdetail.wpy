@@ -4,7 +4,10 @@
       <image src="{{currentWish.img_urls[0]}}"/>
     </view>
     <view class="weui-article">
-      <view class="weui-article__h1">  {{currentWish.wish_title}}</view>
+      <view class="weui-article__h1">  
+        {{currentWish.wish_title}}
+        <view class="weui-badge" style="margin-left: .1rem; background-color:#808080;">{{currentWish.statu}}</view>
+      </view>
        <view class="weui-article__p content_desc">
           {{currentWish.wish_desc}}
         </view>

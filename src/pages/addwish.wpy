@@ -22,10 +22,9 @@
           display: flex;
           justify-content: center;
           align-items: center;
-          border: solid 1px #B3B3B3;
           image.weui-uploader__img {
-            width: 50px;
-            height: 50px;
+            width: 100%;
+            height: 100%;
           }
         }
       }
@@ -76,78 +75,61 @@
 
 <template>
   <view class="page">
-    <view class="weui-cells weui-cells_after-title">
-      <button class="weui-cell weui-cell_access" @tap="open" hover-class="weui-cell_active">
-        <image src="/images/no_image.png" />
-        <view class="weui-cell__hd">
-          心愿类型
+    <form bindsubmit="bindFormSubmit">
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__bd">
+            <input class="weui-input" placeholder="请填写标题" name="title"/>
+          </view>
         </view>
-        <view class="weui-cell__bd"></view>
-        <view class="weui-cell__ft weui-cell__ft_in-access">{{currentStatu}}</view>
-      </button>
 
-      <view class="weui-cell weui-cell_input">
-        <view class="weui-cell__bd">
-          <input class="weui-input" placeholder="请填写标题"/>
+        <view class="weui-cell">
+          <view class="weui-cell__bd">
+            <textarea class="weui-textarea" placeholder="请填写心愿的具体描述" style="height: 3.3em" name="desc"/>
+            <view class="weui-textarea-counter">0/200</view>
+          </view>
         </view>
-      </view>
 
-      <view class="weui-cell">
-        <view class="weui-cell__bd">
-          <textarea class="weui-textarea" placeholder="请填写心愿的具体描述" style="height: 3.3em"/>
-          <view class="weui-textarea-counter">0/200</view>
-        </view>
-      </view>
-
-      <view class="weui-cell weui-cell-lists">
-        <view class="weui-cell__bd">
-          <view class="weui-uploader">
-            <view class="weui-uploader__bd">
-              <view class="weui-uploader__files" id="uploaderFiles">
-                <block wx:for="{{files}}" wx:key="*this">
-                  <view class="weui-uploader__file" @tap="previewImage" id="{{item}}">
-                    <image class="weui-uploader__img" src="{{item}}" mode="aspectFill" />
-                  </view>
-                </block>
-                <view class="weui-uploader__file">
-                  <image class="weui-uploader__img" src="../images/icon_nav_04_new.png" mode="aspectFill" />
+        <view class="weui-cell weui-cell-lists">
+          <view class="weui-cell__bd">
+            <view class="weui-uploader">
+              <view class="weui-uploader__bd">
+                <view class="weui-uploader__files" id="uploaderFiles">
+                  <block wx:for="{{imgUrlList}}" wx:key="*this">
+                    <view class="weui-uploader__file" @tap="previewImage" id="{{item}}">
+                      <image class="weui-uploader__img" src="{{item}}" mode="aspectFill" />
+                    </view>
+                  </block>
                 </view>
-                <view class="weui-uploader__file">
-                  <image class="weui-uploader__img" src="../images/icon_nav_03.png" mode="aspectFill" />
+                <view class="weui-uploader__input-box">
+                  <view class="weui-uploader__input" @tap="chooseImage"></view>
                 </view>
-                <view class="weui-uploader__file">
-                  <image class="weui-uploader__img" src="../images/icon_nav_02.png" mode="aspectFill" />
-                </view>
-                <view class="weui-uploader__file weui-uploader__file_status">
-                  <image class="weui-uploader__img" src="../images/icon_nav_01.png" mode="aspectFill" />
-                  <view class="weui-uploader__file-content">
-                    <icon type="warn" color="#F43530"></icon>
-                  </view>
-                </view>
-                <view class="weui-uploader__file weui-uploader__file_status">
-                  <image class="weui-uploader__img" src="../images/icon_my_05.png" mode="aspectFill" />
-                  <view class="weui-uploader__file-content">50%</view>
-                </view>
-              </view>
-              <view class="weui-uploader__input-box">
-                <view class="weui-uploader__input" @tap="chooseImage"></view>
               </view>
             </view>
           </view>
         </view>
-      </view>
-    </view>
-    <view class="bottom-button">
-        <button class="weui-btn" type="default" bindtap="buttonTap">
-            发布心愿
-        </button>
-    </view>
 
+        <button class="weui-cell weui-cell_access" @tap="open" hover-class="weui-cell_active">
+          <image src="/images/no_image.png" />
+          <view class="weui-cell__hd">
+            心愿类型
+          </view>
+          <view class="weui-cell__bd"></view>
+          <view class="weui-cell__ft weui-cell__ft_in-access">{{currentStatu}}</view>
+        </button>
+
+      </view>
+      
+      <view class="page__bd page__bd_spacing submit bottom-button">
+        <button class="weui-btn" type="primary" form-type="submit">发布心愿</button>
+      </view>
+    </form>
   </view>
 </template>
 
 <script>
   import wepy from 'wepy'
+  const AV = require('../static/js/av-weapp-min.js')
 
   export default class Wants extends wepy.page {
     config = {
@@ -162,17 +144,51 @@
         '环保回收',
         '人文生活'
       ],
-      currentStatu: '关爱动物'
+      currentStatu: '关爱动物',
+      currentStatuIndex: 1,
+      imgUrlList: [],
+      mapData: {}
     }
 
     computed = {}
 
     methods = {
+      bindFormSubmit (e) {
+        let data = e.detail.value
+        e.detail.value.file = this.imgUrlList
+        e.detail.value.type = this.currentStatuIndex
+        e.detail.value.x = this.mapData.latitude
+        e.detail.value.y = this.mapData.longitude
+        console.log(data)
+        wepy.redirectTo({
+          url: '/pages/wishmap'
+        })
+      },
+      chooseImage () {
+        wepy.chooseImage({
+          count: 1,
+          sizeType: ['original', 'compressed'],
+          sourceType: ['album', 'camera'],
+          success: (res) => {
+            var tempFilePath = res.tempFilePaths[0]
+            new AV.File('file-name', {
+              blob: {
+                uri: tempFilePath
+              }
+            }).save().then((file) => {
+              this.imgUrlList.push(file.url())
+              this.$apply()
+            }
+            ).catch(console.error)
+          }
+        })
+      },
       open () {
         wepy.showActionSheet({
           itemList: this.statuList,
           success: (res) => {
             this.currentStatu = this.statuList[res.tapIndex]
+            this.currentStatuIndex = res.tapIndex + 1
             this.$apply()
           },
           fail: (res) => {
@@ -182,6 +198,14 @@
       }
     }
     onLoad() {
+      wepy.getLocation({
+        type: 'gcj02',
+        success: (res) => {
+          this.mapData.longitude = res.longitude
+          this.mapData.latitude = res.latitude
+          this.$apply()
+        }
+      })
     }
   }
 </script>
