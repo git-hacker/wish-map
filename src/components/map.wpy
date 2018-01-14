@@ -3,10 +3,10 @@
     <view class="tabBar weui-flex">
       <view class="left_button">
          <navigator url="/pages/me" hover-class="navigator-hover">
-          <image src="/static/img/icon_profile.png"/> 
+          <image src="/images/icon_info_active.png"/> 
          </navigator>       
       </view>
-      <view class="center_tabbar weui-flex__item">
+      <view class="center_tabbar">
         <view class="center_tabbar-list">
           <navigator url="/pages/me" class="tab-li" hover-class="tab-li-hover">
             全部分类
@@ -23,10 +23,11 @@
         </view>
       </view>
       <view class="right_button">
-        <navigator url="/pages/wishlist" hover-class="navigator-hover">
-          <image src="/static/img/icon_menu.png"/> 
+        <navigator url="/pages/me" hover-class="navigator-hover">
+          <image src="/static/img/menu.png"/> 
         </navigator> 
       </view>
+
     </view>
     <map id="map" 
       scale="{{mapData.scale}}" 
@@ -40,21 +41,16 @@
       bindregionchange="mapTap">
     </map>
     <wish-submit wx:if="{{!showDesc}}"></wish-submit>
-    <view class="bottom-pop" wx:if="{{showDesc}}">
-      <wish-desc :syncWish.sync="currentMarker"></wish-desc>
-    </view>  
+    <wish-desc wx:if="{{showDesc}}" :syncWish.sync="currentMarker"></wish-desc>
   </view>
 </template>
 
 <script>
   import wepy from 'wepy'
-  import testData from '../components/data'
-  import wishDesc from '../components/wishdesc'
-  import wishSubmit from '../components/wishsubmit'
-  export default class WishMap extends wepy.page {
-    config = {
-      navigationBarTitleText: '心愿地图'
-    }
+  import testData from './data'
+  import wishDesc from './wishdesc'
+  import wishSubmit from './wishsubmit'
+  export default class Map extends wepy.component {
     components = {
       'wish-desc': wishDesc,
       'wish-submit': wishSubmit
@@ -166,7 +162,7 @@
   }
   .left_button, .right_button {
     height: 100%;
-    width: 30px;
+    width: 10%;
     navigator {
       height: 100%;
       width: 100%;
@@ -176,28 +172,36 @@
       justify-content: center;
       align-items: center;
       image {
-        height: 100%;
-        width: 100%;
+        height: 90%;
+        width: 90%;
         display: block;
         vertical-align: bottom;
       }
     };
   }
+  .right_button {
+    navigator {
+      image {
+        height: 70%;
+        width: 70%;
+      }
+    };
+  }
   .center_tabbar {
-    margin: 0 10px;
+    margin: 0 2%;
     height: 100%;
-    font-size: 13px;
+    width: 80%;
+    font-size: 14px;
     text-align: left;
     overflow-x: auto;
     line-height: 5vh;
     .center_tabbar-list{
-      min-width: 280px;
+      max-width: 320px;
       display: flex;
       justify-content: center;
       align-items: center;
       .tab-li {
-        width: 70px;
-        text-align: left;
+        width: 80px;
         color: #9D9D9D;
         vertical-align: bottom;
         display: inline-block;
