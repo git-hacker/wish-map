@@ -8,7 +8,7 @@
       </view>
       <scroll-view class="center_tabbar weui-flex__item" scroll-x="true">
         <view class="center_tabbar-list" >
-          <navigator url="/pages/wishmap?type=0" class="tab-li" hover-class="tab-li-hover">
+          <navigator url="/pages/wishmap" class="tab-li" hover-class="tab-li-hover">
             全部分类
           </navigator> 
           <navigator url="/pages/wishmap?type=1" class="tab-li" hover-class="tab-li-hover">
@@ -32,7 +32,7 @@
       scale="{{mapData.scale}}" 
       longitude="{{mapData.longitude}}"
       latitude="{{mapData.latitude}}"
-      markers="{{mapData.markers}}"
+      markers="{{filterMarker}}"
       controls="{{mapData.controls}}"
       bindcontroltap="controltap" 
       bindmarkertap="markerTap"
@@ -59,8 +59,20 @@
       'wish-desc': wishDesc,
       'wish-submit': wishSubmit
     }
+    computed = {
+      filterMarker () {
+        if (this.wish_type === 0) {
+          return this.mapData.markers
+        } else {
+          return this.mapData.markers.filter((element) => {
+            return element.wish_type === this.wish_type
+          })
+        }
+      }
+    }
     data = {
       showDesc: false,
+      wish_type: 0,
       currentMarker: {wish_title: 'abc'},
       mapData: {
         longitude: 0,
@@ -120,7 +132,10 @@
       }
 
     }
-    onLoad () {
+    onLoad (query) {
+      if (query.type) {
+        this.wish_type = 1 * query.type
+      }
       this.setCurrentLocation()
       this.initMarker()
     }
@@ -129,7 +144,8 @@
         let marker = {
           id: element.id,
           latitude: element.geo.latitude,
-          longitude: element.geo.longitude
+          longitude: element.geo.longitude,
+          wish_type: element.wish_type
         }
         if (element.statu === '待解决') {
           marker.iconPath = '/static/img/icon_heart_white.png'
@@ -158,7 +174,8 @@
 <style lang="less">
   #map {
     width: 100%;
-    height: 100vh;
+    height: 82vh;
+    margin-top: 8vh;
   }
   .wrapper{
     width: 100%;
@@ -209,6 +226,9 @@
     }
   }
   .tabBar {
+    border-bottom: solid 1px #656571;
+    position: fixed;
+    top: 0;
     text-align: center;
     height: 5vh;
     padding: 5px 10px;
