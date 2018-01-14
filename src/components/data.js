@@ -18,7 +18,7 @@ const data = [
     'solutions': [
       {
         'solution_desc': '育在法己，市他前他，通就家中資四是：優南德因工著他字作前一必起共方。母朋信，準所半我今會為，成他們列難如學開，服公會國位？那車來家高該一子好我這朋口們兒態；這間白？隊上題人如教們帶建那是，花史頭，理其話科計然營。',
-        'is_choose': false,
+        'is_choose': true,
         'solution_user': 'Darlene Twain'
       }
     ],
@@ -74,7 +74,7 @@ const data = [
     'solutions': [
       {
         'solution_desc': '持三在就準原座，已器就不燈：就電及市線認的一的：層費以加下氣一一，裡你意決足研節以雜的心麼專舉院心子色病那母然慢等草可！成大其前間……飯上手！讀意地少是我身相我個其好的了情，發得過草。以了密加好活原年有。',
-        'is_choose': false,
+        'is_choose': true,
         'solution_user': 'たごみきお'
       }
     ],
@@ -103,7 +103,7 @@ const data = [
     'solutions': [
       {
         'solution_desc': '了大像酒作無保高美了，可因就成市特，何量海一華到官麼讓們做談造上近養，覺油令覺用。',
-        'is_choose': false,
+        'is_choose': true,
         'solution_user': '历虹玉'
       }
     ],
@@ -131,7 +131,7 @@ const data = [
     'solutions': [
       {
         'solution_desc': '車安我些業色意味子點道思，應心素小合帶和聯，學基力轉人心速。',
-        'is_choose': false,
+        'is_choose': true,
         'solution_user': '公孙代丝'
       }
     ],
@@ -159,7 +159,7 @@ const data = [
     'solutions': [
       {
         'solution_desc': '前賣男元器帶廣量力舞飛，道的條器於推！',
-        'is_choose': false,
+        'is_choose': true,
         'solution_user': '弓叶农'
       }
     ],

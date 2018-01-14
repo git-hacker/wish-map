@@ -1,0 +1,50 @@
+<style lang="less">
+  input {
+    border: solid 1px #cccccc;
+    margin-top : 4vh;
+    margin-bottom: 4vh;
+  }
+  button {
+    background-color: #222233;
+    color: #fefefe
+  }
+</style>
+<template>
+  <view class="page">
+    <form bindsubmit="bindFormSubmit">
+      <input placeholder="请填写你的邮箱" name="email"/>
+      <input placeholder="请填写您的手机号码" name="phone"/>
+      <button form-type="submit"> 提交 </button>
+    </form>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+
+  export default class Contact extends wepy.page {
+    config = {
+      navigationBarTitleText: '填写联系方式'
+    }
+    components = {
+    }
+    data = {
+    }
+    computed = {
+    }
+    methods = {
+      bindFormSubmit () {
+        wepy.showToast({
+          title: '你已经成功参与该项目！',
+          icon: 'success',
+          duration: 1500
+        })
+        setTimeout(() => {
+          wepy.navigateBack()
+        }, 1500)
+      }
+    }
+    onLoad() {
+    }
+  }
+</script>

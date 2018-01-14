@@ -8,6 +8,10 @@
   justify-content: space-between;
   box-sizing: border-box;
 }
+page {
+  color: #656571
+}
+
 </style>
 
 <script>
@@ -28,7 +32,9 @@
         'pages/addwish',
         'pages/wishdetail',
         'pages/solution',
-        'pages/wishlist'
+        'pages/wishlist',
+        'pages/contact',
+        'pages/checksolution'
       ],
       'window': {
         'backgroundTextStyle': 'light',

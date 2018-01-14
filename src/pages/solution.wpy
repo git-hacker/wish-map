@@ -4,6 +4,10 @@
     margin-top : 5vh;
     margin-bottom: 2vh;
   }
+  button {
+    background-color: #222233;
+    color: #fefefe
+  }
 </style>
 <template>
   <view class="container">
@@ -28,8 +32,11 @@
     computed = {
     }
     methods = {
-    }
-    onLoad() {
+      bindFormSubmit () {
+        wepy.navigateTo({
+          url: '/pages/checksolution'
+        })
+      }
     }
   }
 </script>

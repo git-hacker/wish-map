@@ -8,22 +8,27 @@
         {{currentWish.wish_title}}
         <view class="weui-badge" style="margin-left: .1rem; background-color:#808080;">{{currentWish.statu}}</view>
       </view>
-       <view class="weui-article__p content_desc">
-          {{currentWish.wish_desc}}
-        </view>
-        <view class="weui-article__p">
-          <image class="weui-article__img detail_img"  wx:for="{{currentWish.img_urls}}" wx:if="{{index!==0}}" src="{{item}}"/>
-        </view>
+      <view class="weui-article__p content_desc" wx:if="{{currentWish.statu === '解决中'}}">
+        <view class="label">现在解决方案</view>
+        {{solution.solution_desc}}
+      </view>
+      <view class="weui-article__p content_desc">
+        <view class="label">心愿内容</view>
+        {{currentWish.wish_desc}}
+      </view>
+      <view class="weui-article__p">
+        <image class="weui-article__img detail_img" wx:for="{{currentWish.img_urls}}" wx:key="*this" wx:if="{{index!==0}}" src="{{item}}"/>
+      </view>
     </view>
     <view class="weui-flex bottom-button">
       <view style="width:30%;margin-right:5%">
-          <button type="default">关注({{currentWish.stars}})</button>
+          <button type="default" bindtap="starPlus">关注({{currentWish.stars}})</button>
       </view>
       <view style="width:70%" wx:if="{{currentWish.statu === '待解决'}}" class="weui-flex__item">
           <button type="default" bindtap="submitSolution">提供解决方案</button>
       </view>
       <view style="width:70%"  wx:if="{{currentWish.statu === '解决中'}}" class="weui-flex__item">
-          <button type="default" bindtap="submitSolution">我要参与解决</button>
+          <button type="default" bindtap="joinSolution">我要参与解决</button>
       </view>
     </view>
   </view>
@@ -37,12 +42,22 @@
       navigationBarTitleText: '心愿详情'
     }
     data= {
-      currentWish: {}
+      currentWish: {},
+      solution: {}
     }
     methods = {
+      starPlus () {
+        this.currentWish.stars++
+        this.$apply()
+      },
       submitSolution(e) {
         wepy.navigateTo({
           url: '/pages/solution'
+        })
+      },
+      joinSolution(e) {
+        wepy.navigateTo({
+          url: '/pages/contact'
         })
       }
     }
@@ -51,6 +66,9 @@
         return element.id.toString() === query.wishId
       })
       this.currentWish = currentWish
+      this.solution = currentWish.solutions.find((element) => {
+        return element.is_choose === true
+      })
     }
   }
 </script>
@@ -65,8 +83,13 @@
     }
   }
   .content_desc {
-    font-size: .7rem;
-    color: #808080;
+    font-size: .8rem;
+    color: #656571;
+    .label {
+      color: #222233;
+      margin-bottom: .8rem;
+      font-weight: bold;
+    }
   }
   .detail_img {
     height:130px;
@@ -74,13 +97,12 @@
     margin:2.5%
   }
   .bottom-button{
-    position: fixed;
-    bottom: 0;
     width: 100%;
     height: 45.6px;
-    background-color: #fefefe;
     button {
-      color: #808080;
+      height:100%;
+      background-color: #222233;
+      color: #fefefe;
       font-size: .8rem;
       line-height: 2.2rem;
     }

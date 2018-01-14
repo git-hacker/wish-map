@@ -1,0 +1,60 @@
+<style lang="less">
+  textarea {
+    border: solid 1px #cccccc;
+    margin-top : 5vh;
+    margin-bottom: 2vh;
+  }
+  button {
+    background-color: #222233;
+    color: #fefefe
+  }
+  .wrapper {
+    text-align: center;
+  }
+  .content_desc {
+    font-size: .8rem;
+    color: #656571;
+  }
+  .weui-article__h1 {
+    color: #222233;
+  }
+</style>
+<template>
+  <view class="wrapper page">
+    <view class="article">
+     <view class="weui-article__h1">  
+          感谢你的方案！
+      </view>
+      <view class="weui-article__p content_desc">
+        我们已收到您提交的解决方案，并将在经过专业智库审核通过后确定是否采纳，
+        请耐心等待。在此之前，你可以在个人中心的“我的解决方案”找到并查看状态
+      </view>
+    </view>
+    <button bindtap="handleTap">我知道啦！</button>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+
+  export default class Checksolution extends wepy.page {
+    config = {
+      navigationBarTitleText: '填写解决方案'
+    }
+    components = {
+    }
+    data = {
+    }
+    computed = {
+    }
+    methods = {
+      handleTap() {
+        wepy.navigateTo({
+          url: '/pages/wishmap'
+        })
+      }
+    }
+    onLoad() {
+    }
+  }
+</script>

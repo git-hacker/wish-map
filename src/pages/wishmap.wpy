@@ -6,22 +6,22 @@
           <image src="/static/img/icon_profile.png"/> 
          </navigator>       
       </view>
-      <view class="center_tabbar weui-flex__item">
-        <view class="center_tabbar-list">
-          <navigator url="/pages/me" class="tab-li" hover-class="tab-li-hover">
+      <scroll-view class="center_tabbar weui-flex__item" scroll-x="true">
+        <view class="center_tabbar-list" >
+          <navigator url="/pages/wishmap?type=0" class="tab-li" hover-class="tab-li-hover">
             全部分类
           </navigator> 
-          <navigator url="/pages/me" class="tab-li" hover-class="tab-li-hover">
+          <navigator url="/pages/wishmap?type=1" class="tab-li" hover-class="tab-li-hover">
             关爱动物
           </navigator> 
-          <navigator url="/pages/me" class="tab-li" hover-class="tab-li-hover">
+          <navigator url="/pages/wishmap?type=2" class="tab-li" hover-class="tab-li-hover">
             环保回收
           </navigator> 
-          <navigator url="/pages/me" class="tab-li" hover-class="tab-li-hover">
+          <navigator url="/pages/wishmap?type=3" class="tab-li" hover-class="tab-li-hover">
             人文娱乐
           </navigator> 
         </view>
-      </view>
+      </scroll-view>
       <view class="right_button">
         <navigator url="/pages/wishlist" hover-class="navigator-hover">
           <image src="/static/img/icon_menu.png"/> 
@@ -132,9 +132,9 @@
           longitude: element.geo.longitude
         }
         if (element.statu === '待解决') {
-          marker.iconPath = '/static/img/heart.png'
+          marker.iconPath = '/static/img/icon_heart_white.png'
         } else if (element.statu === '解决中') {
-          marker.iconPath = '/static/img/star.png'
+          marker.iconPath = '/static/img/icon_heart.png'
         } else {
           return null
         }
@@ -163,6 +163,7 @@
   .wrapper{
     width: 100%;
     height: 100%;
+    color: #656571;
   }
   .left_button, .right_button {
     height: 100%;
@@ -186,7 +187,7 @@
   .center_tabbar {
     margin: 0 10px;
     height: 100%;
-    font-size: 13px;
+    font-size: .7rem;
     text-align: left;
     overflow-x: auto;
     line-height: 5vh;
@@ -198,12 +199,11 @@
       .tab-li {
         width: 70px;
         text-align: left;
-        color: #9D9D9D;
         vertical-align: bottom;
         display: inline-block;
       }
       .tab-li-hover {
-        color: #333333;
+        color: #E45274;
         font-weight: bold;
       }
     }
@@ -212,5 +212,9 @@
     text-align: center;
     height: 5vh;
     padding: 5px 10px;
+  }
+  .bottom-pop {
+    position: fixed;
+    bottom: 0;
   }
 </style>
