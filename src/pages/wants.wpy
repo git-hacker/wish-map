@@ -1,14 +1,11 @@
 <style lang="less">
-
 </style>
 
 <template>
   <view class="page">
     <view class="weui-cells weui-cells_after-title">
-      <repeat for="{{list}}" key="index" index="index" item="item">
-        <view class="weui-cell">
-        <wantItem :item="item"></wantItem>
-        </view>
+      <repeat for="{{wish_list}}" key="index" index="index" item="item">
+          <wish-desc :syncWish.sync="item"></wish-desc>
       </repeat>
     </view>
   </view>
@@ -16,21 +13,23 @@
 
 <script>
   import wepy from 'wepy'
-  import wantItem from '../components/wantItem'
+  import WishDesc from '../components/wishdesc'
 
   export default class Wants extends wepy.page {
     config = {
-      navigationBarTitleText: '我的心愿'
+      navigationBarTitleText: '心愿列表'
     }
-
     components = {
-      'wantItem': wantItem
+      'wish-desc': WishDesc
     }
     data = {
-      list: [
+      wish_list: [
         {
           ID: 1,
-          bannar_url: '../images/icon_nav_01.png',
+          img_urls: [
+            '/static/img/bannar.jpg',
+            '/static/img/bannar.jpg'
+          ],
           wish_type: '环保回收',
           wish_title: '社区附近xxx',
           status: '待解决',
@@ -40,31 +39,40 @@
         },
         {
           ID: 2,
-          bannar_url: '../images/icon_nav_02.png',
+          img_urls: [
+            '/static/img/bannar.jpg',
+            '/static/img/bannar.jpg'
+          ],
           wish_type: '关爱动物',
           wish_title: '社区附近yyy',
           status: '解决中',
-          wish_desc: 'yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy',
+          wish_desc: 'yyyyyyyyyyyyyyyyyyyyyyyyyyyy yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy',
           location: '李家沱2',
           stars: 55
         },
         {
           ID: 3,
-          bannar_url: '../images/icon_nav_03.png',
+          img_urls: [
+            '/static/img/bannar.jpg',
+            '/static/img/bannar.jpg'
+          ],
           wish_type: '人文娱乐',
           wish_title: '社区附近zzz',
           status: '审核中',
-          wish_desc: 'zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz',
+          wish_desc: 'zzzzzzzzzzzzzzzzzzzzzzzzzzzzz zzzzzzzzzzzzzzzzzzzzzzzzzzz',
           location: '李家沱3',
           stars: 5
         },
         {
           ID: 4,
-          bannar_url: '../images/icon_nav_04.png',
+          img_urls: [
+            '/static/img/bannar.jpg',
+            '/static/img/bannar.jpg'
+          ],
           wish_type: '环保回收',
           wish_title: '社区附近aaa',
           status: '已解决',
-          wish_desc: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+          wish_desc: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
           location: '李家沱4',
           stars: 23
         }

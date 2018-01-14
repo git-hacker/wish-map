@@ -1,0 +1,35 @@
+<style lang="less">
+  textarea {
+    border: solid 1px #cccccc;
+    margin-top : 5vh;
+    margin-bottom: 2vh;
+  }
+</style>
+<template>
+  <view class="container">
+    <form bindsubmit="bindFormSubmit">
+      <textarea placeholder="请简单描述你的方案" name="textarea"/>
+      <button form-type="submit"> 提交 </button>
+    </form>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+
+  export default class Solution extends wepy.page {
+    config = {
+      navigationBarTitleText: '填写解决方案'
+    }
+    components = {
+    }
+    data = {
+    }
+    computed = {
+    }
+    methods = {
+    }
+    onLoad() {
+    }
+  }
+</script>

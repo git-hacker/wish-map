@@ -35,28 +35,28 @@
     </view>
 
     <view class="weui-cells weui-cells_after-title">
-      <navigator url="/pages/wants" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <navigator url="/pages/wants?type=my" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
         <view class="weui-cell__hd">
           <image class="listImage" src="../images/icon_my_02.png"></image>
         </view>
         <view class="weui-cell__bd">我的心愿</view>
         <view class="weui-cell__ft weui-cell__ft_in-access">{{wantCnt}}</view>
       </navigator>
-      <navigator url="/pages/concerns" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <navigator url="/pages/wants?type=myfollow" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
         <view class="weui-cell__hd">
           <image class="listImage" src="../images/icon_my_02.png"></image>
         </view>
         <view class="weui-cell__bd">关注心愿</view>
         <view class="weui-cell__ft weui-cell__ft_in-access">{{consernCnt}}</view>
       </navigator>
-      <navigator url="/pages/resolves" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <navigator url="/pages/wants?type=mysolve" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
         <view class="weui-cell__hd">
           <image class="listImage" src="../images/icon_my_03.png"></image>
         </view>
         <view class="weui-cell__bd">我的解决方案</view>
         <view class="weui-cell__ft weui-cell__ft_in-access">{{resolveCnt}}</view>
       </navigator>
-      <navigator url="/pages/joins" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <navigator url="/pages/wants?type=myjoin" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
         <view class="weui-cell__hd">
           <image class="listImage" src="../images/icon_my_04.png"></image>
         </view>

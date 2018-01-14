@@ -22,7 +22,9 @@
         'pages/me',
         'pages/wants',
         'pages/addwish',
-        'pages/wishdetail'
+        'pages/wishdetail',
+        'pages/solution',
+        'pages/wishlist'
       ],
       'window': {
         'backgroundTextStyle': 'light',

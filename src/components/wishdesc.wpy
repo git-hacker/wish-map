@@ -1,24 +1,23 @@
 <template>
-    <view class="bottom-pop" bindtap="handleTap">
-        <view class="weui-flex">
-            <view>
-              <view class="placeholder">
-                <image  class="bannar"  mode="aspectFill" src="{{syncWish.img_urls[0]}}"/>
+    <view class="weui-flex desc-container" bindtap="handleTap">
+        <view>
+          <view class="placeholder">
+            <image  class="bannar"  mode="aspectFill" src="{{syncWish.img_urls[0]}}"/>
+          </view>
+        </view>
+        <view class="weui-flex__item">
+          <view class="placeholder">
+            <view class="weui-article">
+              <view class="weui-article__h5">
+                {{syncWish.wish_title}}
+                <view class="weui-badge" style="margin-left: .1rem; background-color:#808080;">{{syncWish.statu}}</view>
               </view>
-            </view>
-            <view class="weui-flex__item">
-              <view class="placeholder">
-                <view class="weui-article">
-                  <view class="weui-article__h4">
-                    {{syncWish.wish_title}}
-                  </view>
-                  <view class="weui-article__p content">
-                      {{syncWish.wish_desc}}
-                  </view>
-                  <view class="label">&#x2605; {{syncWish.stars}}</view>
-                </view>
+              <view class="weui-article__p content">
+                  {{syncWish.wish_desc}}
               </view>
+              <view class="label">&#x2605; {{syncWish.stars}}</view>
             </view>
+          </view>
         </view>
     </view>
 </template>
@@ -48,18 +47,16 @@
     }
 </script>
 <style lang="less">
-    .bottom-pop{
-        border-top: 1px solid #cccccc;
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-        height: 130px;
-        background-color: #fefefe;
+    .desc-container {
+      width: 100%;
+      height: 25vh;
+      background-color: #fefefe;
+      border-top: 1px solid #cccccc;
     }
     .bannar {
       width: 90px;
-      height: 90px;
-      margin: 20px 5px 20px 5px;
+      height: 15vh;
+      margin: 5vh 5px 5vh 5px;
     }
     .content {
       height: 2.4rem;
@@ -70,6 +67,7 @@
       display: -webkit-box;
       -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;
+      word-break: break-all;
       color: #808080
     }
     .label {

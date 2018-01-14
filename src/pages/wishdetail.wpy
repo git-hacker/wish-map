@@ -16,8 +16,11 @@
       <view style="width:30%;margin-right:5%">
           <button type="default">关注({{currentWish.stars}})</button>
       </view>
-      <view style="width:70%"  class="weui-flex__item">
-          <button type="default">提供解决方案</button>
+      <view style="width:70%" wx:if="{{currentWish.statu === '待解决'}}" class="weui-flex__item">
+          <button type="default" bindtap="submitSolution">提供解决方案</button>
+      </view>
+      <view style="width:70%"  wx:if="{{currentWish.statu === '解决中'}}" class="weui-flex__item">
+          <button type="default" bindtap="submitSolution">我要参与解决</button>
       </view>
     </view>
   </view>
@@ -32,6 +35,13 @@
     }
     data= {
       currentWish: {}
+    }
+    methods = {
+      submitSolution(e) {
+        wepy.navigateTo({
+          url: '/pages/solution'
+        })
+      }
     }
     onLoad(query) {
       let currentWish = testData.find((element) => {

@@ -11,13 +11,13 @@
   <view class="page">
     <view class="weui-cells weui-cells_after-title">
 
-      <navigator class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <button class="weui-cell weui-cell_access" @tap="open" hover-class="weui-cell_active">
         <view class="weui-cell__hd">
           <image class="listImage" src="../images/icon_my_02.png"></image>
         </view>
         <view class="weui-cell__bd">心愿类型</view>
-        <view class="weui-cell__ft weui-cell__ft_in-access">关爱动物</view>
-      </navigator>
+        <view class="weui-cell__ft weui-cell__ft_in-access">{{currentStatu}}</view>
+      </button>
 
       <view class="weui-cell weui-cell_input">
         <view class="weui-cell__bd">
@@ -89,12 +89,32 @@
 
     components = {}
 
-    data = {}
+    data = {
+      statuList: [
+        '关爱动物',
+        '环保回收',
+        '人文生活'
+      ],
+      currentStatu: '关爱动物'
+    }
 
     computed = {}
 
-    methods = {}
-
+    methods = {
+      open () {
+        wepy.showActionSheet({
+          itemList: this.statuList,
+          success: (res) => {
+            console.log(res.tapIndex)
+            this.currentStatu = this.statuList[res.tapIndex]
+            this.$apply()
+          },
+          fail: (res) => {
+            console.log(res.errMsg)
+          }
+        })
+      }
+    }
     onLoad() {
     }
   }
