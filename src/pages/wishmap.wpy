@@ -7,9 +7,7 @@
          </navigator>       
       </view>
       <view class="center_tabbar">
-        <navigator url="/pages/me" hover-class="navigator-hover">
-          s
-        </navigator> 
+          ssss
       </view>
       <view class="right_button">
         <navigator url="/pages/wishlist" hover-class="navigator-hover">

@@ -14,7 +14,7 @@
 <script>
   import wepy from 'wepy'
   import WishDesc from '../components/wishdesc'
-
+  import testData from '../components/data'
   export default class Wants extends wepy.page {
     config = {
       navigationBarTitleText: '心愿列表'
@@ -23,60 +23,7 @@
       'wish-desc': WishDesc
     }
     data = {
-      wish_list: [
-        {
-          ID: 1,
-          img_urls: [
-            '/static/img/bannar.jpg',
-            '/static/img/bannar.jpg'
-          ],
-          wish_type: '环保回收',
-          wish_title: '社区附近xxx',
-          status: '待解决',
-          wish_desc: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-          location: '李家沱',
-          stars: 54
-        },
-        {
-          ID: 2,
-          img_urls: [
-            '/static/img/bannar.jpg',
-            '/static/img/bannar.jpg'
-          ],
-          wish_type: '关爱动物',
-          wish_title: '社区附近yyy',
-          status: '解决中',
-          wish_desc: 'yyyyyyyyyyyyyyyyyyyyyyyyyyyy yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy',
-          location: '李家沱2',
-          stars: 55
-        },
-        {
-          ID: 3,
-          img_urls: [
-            '/static/img/bannar.jpg',
-            '/static/img/bannar.jpg'
-          ],
-          wish_type: '人文娱乐',
-          wish_title: '社区附近zzz',
-          status: '审核中',
-          wish_desc: 'zzzzzzzzzzzzzzzzzzzzzzzzzzzzz zzzzzzzzzzzzzzzzzzzzzzzzzzz',
-          location: '李家沱3',
-          stars: 5
-        },
-        {
-          ID: 4,
-          img_urls: [
-            '/static/img/bannar.jpg',
-            '/static/img/bannar.jpg'
-          ],
-          wish_type: '环保回收',
-          wish_title: '社区附近aaa',
-          status: '已解决',
-          wish_desc: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-          location: '李家沱4',
-          stars: 23
-        }
-      ]
+      wish_list: testData
     }
 
     computed = {}
