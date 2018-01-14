@@ -36,8 +36,7 @@
       controls="{{mapData.controls}}"
       bindcontroltap="controltap" 
       bindmarkertap="markerTap"
-      bindtap="mapTap"
-      bindregionchange="mapTap">
+      bindtap="mapTap">
     </map>
     <wish-submit wx:if="{{!showDesc}}"></wish-submit>
     <view class="bottom-pop" wx:if="{{showDesc}}">
@@ -122,8 +121,8 @@
           this.mapData.latitude = currentMarker.geo.latitude
           this.mapData.longitude = currentMarker.geo.longitude
           this.currentMarker = currentMarker
-          this.$apply()
           this.showDesc = true
+          this.$apply()
         }
       },
       mapTap() {
@@ -174,8 +173,10 @@
 <style lang="less">
   #map {
     width: 100%;
-    height: 82vh;
-    margin-top: 8vh;
+    height: 70vh;
+    margin-top: 9vh;
+    border-top: solid 1px #656571;
+    border-bottom: solid 1px #656571;
   }
   .wrapper{
     width: 100%;
@@ -209,7 +210,7 @@
     overflow-x: auto;
     line-height: 5vh;
     .center_tabbar-list{
-      min-width: 280px;
+      min-width:280px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -226,7 +227,7 @@
     }
   }
   .tabBar {
-    border-bottom: solid 1px #656571;
+    width: 95%;
     position: fixed;
     top: 0;
     text-align: center;
