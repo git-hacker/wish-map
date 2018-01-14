@@ -30,19 +30,6 @@
         'navigationBarTitleText': 'WeChat',
         'navigationBarTextStyle': 'black'
       },
-      'tabBar': {
-        'position': 'top',
-        'list': [
-          {
-            'pagePath': 'pages/wishmap',
-            'text': '心愿地图'
-          },
-          {
-            'pagePath': 'pages/me',
-            'text': '个人中心'
-          }
-        ]
-      },
       'networkTimeout': {
         'request': 10000,
         'downloadFile': 10000

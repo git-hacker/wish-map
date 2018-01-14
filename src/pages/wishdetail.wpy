@@ -14,7 +14,7 @@
     </view>
     <view class="weui-flex bottom-button">
       <view style="width:30%;margin-right:5%">
-          <button type="default" >关注</button>
+          <button type="default">关注({{currentWish.stars}})</button>
       </view>
       <view style="width:70%"  class="weui-flex__item">
           <button type="default">提供解决方案</button>
@@ -27,13 +27,17 @@
   import wepy from 'wepy'
   import testData from '../components/data'
   export default class Wishdetail extends wepy.page {
+    config = {
+      navigationBarTitleText: '心愿详情'
+    }
     data= {
       currentWish: {}
     }
     onLoad(query) {
-      this.currentWish = testData.find((element) => {
+      let currentWish = testData.find((element) => {
         return element.id.toString() === query.wishId
       })
+      this.currentWish = currentWish
     }
   }
 </script>
@@ -48,7 +52,7 @@
     }
   }
   .content_desc {
-    font-size: .8rem;
+    font-size: .7rem;
     color: #808080;
   }
   .detail_img {
@@ -62,5 +66,10 @@
     width: 100%;
     height: 45.6px;
     background-color: #fefefe;
+    button {
+      color: #808080;
+      font-size: .8rem;
+      line-height: 2.2rem;
+    }
   }
 </style>

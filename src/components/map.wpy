@@ -1,11 +1,29 @@
 <template>
   <view class="wrapper">
+    <view class="tabBar weui-flex">
+      <view class="left_button">
+         <navigator url="/pages/me" hover-class="navigator-hover">
+          <image src="/static/img/user.png"/> 
+         </navigator>       
+      </view>
+      <view class="center_tabbar">
+        <navigator url="/pages/me" hover-class="navigator-hover">
+          s
+        </navigator> 
+      </view>
+      <view class="right_button">
+        <navigator url="/pages/me" hover-class="navigator-hover">
+          <image src="/static/img/menu.png"/> 
+        </navigator> 
+      </view>
+
+    </view>
     <map id="map" 
       scale="{{mapData.scale}}" 
-      longitude="{{mapData.longitude}}" 
-      latitude="{{mapData.latitude}}" 
-      markers="{{mapData.markers}}" 
-      controls="{{mapData.controls}}" 
+      longitude="{{mapData.longitude}}"
+      latitude="{{mapData.latitude}}"
+      markers="{{mapData.markers}}"
+      controls="{{mapData.controls}}"
       bindcontroltap="controltap" 
       bindmarkertap="markerTap"
       bindtap="mapTap"
@@ -130,5 +148,41 @@
   .wrapper{
     width: 100%;
     height: 100%;
+  }
+  .left_button {
+    height: 100%;
+    width: 10%;
+    navigator {
+      height: 100%;
+      width: 100%;
+    };
+    image {
+      height: 90%;
+      width: 100%;
+    }
+  }
+  .right_button {
+    height: 100%;
+    width: 10%;
+    navigator {
+      height: 100%;
+      width: 100%;
+    };
+    image {
+      height: 90%;
+      width: 100%;
+    }
+  }
+  .center_tabbar {
+    margin: 0 2%;
+    padding: 1px 5px;
+    height: 100%;
+    width: 80%;
+    background-color: red;
+  }
+  .tabBar {
+    text-align: center;
+    height: 5vh;
+    padding: 5px 10px;
   }
 </style>
