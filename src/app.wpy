@@ -13,7 +13,11 @@
 <script>
   import wepy from 'wepy'
   import 'wepy-async-function'
-
+  const AV = require('./static/js/av-weapp-min.js')
+  AV.init({
+    appId: 'KHzYllecavwsEVpkr7R1hUMb-gzGzoHsz',
+    appKey: 'RVKpsaG5fvio9F730mvRgXM6'
+  })
   export default class extends wepy.app {
     config = {
       'pages': [
