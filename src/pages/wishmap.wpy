@@ -174,15 +174,13 @@
   #map {
     width: 100%;
     height: 100vh;
-    border-top: solid 1px #656571;
-    border-bottom: solid 1px #656571;
     z-index: -10;
   }
   .wrapper{
     width: 100%;
     max-width: 100%;
-    height: 50px;
-    line-height: 50px;
+    height: 40px;
+    line-height: 40px;
     color: #656571;
     background: #fff;
     z-index: 10;
@@ -190,10 +188,12 @@
   .left_button, .right_button {
     height: 40px;
     width: 40px;
+    text-align: center;
+    vertical-align: middle;
     navigator {
-      height: 40px;
-      width: 40px;
-      text-align: center;
+      height: 30px;
+      width: 30px;
+      margin: 5px auto;
       image {
         height: 100%;
         width: 100%;
@@ -204,12 +204,14 @@
   .center_tabbar {
     height: 40px;
     line-height: 40px;
-    font-size: 14px;
+    font-size: 15px;
     text-align: center;
     overflow-x: auto;
     .center_tabbar-list{
+      min-width: 280px;
       .tab-li {
         width: 25%;
+        min-width: 70px;
         text-align: center;
         display: inline-block;
       }
@@ -220,12 +222,14 @@
     }
   }
   .tabBar {
-    width: 95%;
+    width: 100%;
     position: fixed;
     top: 0;
     text-align: center;
-    height: 5vh;
-    padding: 5px 10px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .bottom-pop {
     position: fixed;
