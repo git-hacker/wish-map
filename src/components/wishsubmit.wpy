@@ -30,7 +30,8 @@
         button {
           height: 100%;
           border-radius: 0px;
-          background-color: #fff;
+          background-color: #222233;
+          color: #fefefe;
         }
     }
     
