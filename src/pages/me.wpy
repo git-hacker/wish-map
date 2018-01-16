@@ -25,6 +25,39 @@
     width: 20px;
     height: 20px;
   }
+    .weui-cells {
+      background: #F7F6F7;
+      padding-top: 5px;
+      height: 100%;
+      .weui-cell{
+        margin: 0px;
+        font-size: 16px;
+        max-width: 100%;
+        margin-bottom: 5px;
+        background: #fff;
+        view {
+            vertical-align: middle;
+        }
+      }
+    }
+    navigator.weui-cell {
+      border-radius: none;
+        image {
+          width: 30px;
+          height: 30px;
+          // background: #E5E4E5;
+          // border-radius: 4px;
+          margin-right: 10px;
+          vertical-align: middle;
+        }
+    }
+    .weui-cell:before {
+        border-top: none;
+    }
+    .weui-cells:after {
+        border-bottom: none;
+    }
+
 </style>
 
 <template>

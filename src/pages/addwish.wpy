@@ -42,6 +42,9 @@
     .weui-cell:before {
         border-top: none;
     }
+    .weui-cells:after {
+      border-bottom: none;
+    }
     .weui-cell-lists{
       background: #F7F6F7;
     }
@@ -60,9 +63,6 @@
       }
   }
 
-  .weui-cells:after {
-    border-bottom: none;
-  }
   .bottom-button{
     position: fixed;
     bottom: 0;

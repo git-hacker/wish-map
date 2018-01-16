@@ -25,11 +25,12 @@
         position: fixed;
         bottom: 0;
         width: 100%;
-        height: 10vh;
+        height: 50px;
+        border-radius: 0px;
         button {
-          height:100%;
-          background-color: #222233;
-          color:#fefefe;
+          height: 100%;
+          border-radius: 0px;
+          background-color: #fff;
         }
     }
     

@@ -42,7 +42,7 @@
   .itemImage {
     margin-right: 5px;
     horiz-align: left;
-    vertical-align: middle;
+    vertical-align: top;
     width: 20px;
     height: 20px;
   }
