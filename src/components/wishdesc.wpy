@@ -40,7 +40,7 @@
       methods = {
         handleTap (e) {
           wepy.navigateTo({
-            url: `/pages/wishdetail?wishId=${this.syncWish.id}`
+            url: `/pages/wishdetail?wishId=${this.syncWish.objectId}`
           })
         }
       }

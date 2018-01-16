@@ -14,7 +14,8 @@
 <script>
   import wepy from 'wepy'
   import WishDesc from '../components/wishdesc'
-  import testData from '../components/data'
+  const AV = require('../static/js/av-weapp-min.js')
+
   export default class Wants extends wepy.page {
     config = {
       navigationBarTitleText: '心愿列表'
@@ -23,7 +24,7 @@
       'wish-desc': WishDesc
     }
     data = {
-      wish_list: testData
+      wish_list: []
     }
 
     computed = {}
@@ -31,6 +32,13 @@
     methods = {}
 
     onLoad() {
+      new AV.Query('wish').find().then((wish) => {
+        wish.map((w) => {
+          console.log(w.toJSON())
+          this.wish_list.push(w.toJSON())
+        })
+        this.$apply()
+      })
     }
   }
 </script>

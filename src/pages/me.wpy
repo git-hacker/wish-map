@@ -90,12 +90,7 @@
     methods = {}
 
     onLoad() {
-      wepy.getUserInfo({
-        success: (res) => {
-          this.userInfo = res.userInfo
-          this.$apply()
-        }
-      })
+      this.userInfo = this.$parent.globalData.userInfo
     }
   }
 </script>

@@ -20,15 +20,6 @@
   </view>
 </template>
 
-<!--id: 1,-->
-<!--img: '../images/icon_nav_01.png',-->
-<!--tag: '环保回收',-->
-<!--title: '社区附近xxx',-->
-<!--status: '待解决',-->
-<!--content: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',-->
-<!--location: '李家沱',-->
-<!--star: 54-->
-
 <script>
   import wepy from 'wepy'
 

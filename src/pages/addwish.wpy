@@ -32,7 +32,7 @@
         width: 60px;
         height: 60px;
         .uploader__input {
-         
+
         }
       }
       .submit {
@@ -122,7 +122,7 @@
         </button>
 
       </view>
-      
+
       <view class="page__bd page__bd_spacing submit bottom-button">
         <button class="weui-btn" type="default" form-type="submit">提交心愿</button>
       </view>
@@ -163,10 +163,31 @@
         e.detail.value.x = this.mapData.latitude
         e.detail.value.y = this.mapData.longitude
         console.log(data)
-        wepy.redirectTo({
-          url: '/pages/wishmap'
+
+        let Wish = AV.Object.extend('wish')
+        let wish = new Wish()
+
+        wish.set('user_id', this.$parent.globalData.openId)
+        wish.set('wish_title', data.title)
+        wish.set('wish_type', data.type)
+        wish.set('wish_desc', data.desc)
+        wish.set('img_urls', data.file)
+        wish.set('statu', '待解决')
+        wish.set('location', '')
+        wish.set('stars', 0)
+        wish.set('geo', {'latitude': data.x, 'longitude': data.y})
+        wish.save().then((w) => {
+          wepy.redirectTo({
+            url: '/pages/wishmap'
+          })
+        }, (error) => {
+          console.error(error)
+          wepy.redirectTo({
+            url: '/pages/wishmap'
+          })
         })
       },
+
       chooseImage () {
         wepy.chooseImage({
           count: 1,

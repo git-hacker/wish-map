@@ -3,53 +3,53 @@
     <view class="tabBar weui-flex">
       <view class="left_button">
          <navigator url="/pages/me" hover-class="navigator-hover">
-          <image src="/static/img/icon_profile.png"/> 
-         </navigator>       
+          <image src="/static/img/icon_profile.png"/>
+         </navigator>
       </view>
       <scroll-view class="center_tabbar weui-flex__item" scroll-x="true">
         <view class="center_tabbar-list" >
           <navigator url="/pages/wishmap" class="tab-li" hover-class="tab-li-hover">
             全部分类
-          </navigator> 
+          </navigator>
           <navigator url="/pages/wishmap?type=1" class="tab-li" hover-class="tab-li-hover">
             关爱动物
-          </navigator> 
+          </navigator>
           <navigator url="/pages/wishmap?type=2" class="tab-li" hover-class="tab-li-hover">
             环保回收
-          </navigator> 
+          </navigator>
           <navigator url="/pages/wishmap?type=3" class="tab-li" hover-class="tab-li-hover">
             人文娱乐
-          </navigator> 
+          </navigator>
         </view>
       </scroll-view>
       <view class="right_button">
         <navigator url="/pages/wishlist" hover-class="navigator-hover">
-          <image src="/static/img/icon_menu.png"/> 
-        </navigator> 
+          <image src="/static/img/icon_menu.png"/>
+        </navigator>
       </view>
     </view>
-    <map id="map" 
-      scale="{{mapData.scale}}" 
+    <map id="map"
+      scale="{{mapData.scale}}"
       longitude="{{mapData.longitude}}"
       latitude="{{mapData.latitude}}"
       markers="{{filterMarker}}"
       controls="{{mapData.controls}}"
-      bindcontroltap="controltap" 
+      bindcontroltap="controltap"
       bindmarkertap="markerTap"
       bindtap="mapTap">
     </map>
     <wish-submit wx:if="{{!showDesc}}"></wish-submit>
     <view class="bottom-pop" wx:if="{{showDesc}}">
       <wish-desc :syncWish.sync="currentMarker"></wish-desc>
-    </view>  
+    </view>
   </view>
 </template>
 
 <script>
   import wepy from 'wepy'
-  import testData from '../components/data'
   import wishDesc from '../components/wishdesc'
   import wishSubmit from '../components/wishsubmit'
+  const AV = require('../static/js/av-weapp-min.js')
   export default class WishMap extends wepy.page {
     config = {
       navigationBarTitleText: '心愿地图'
@@ -112,10 +112,8 @@
         this.$apply()
       },
       markerTap (e) {
-        let currentMarker = testData.find((element) => {
-          return element.id === e.markerId
-        })
-        if (currentMarker) {
+        new AV.Query('wish').get(e.markerId).then((wish) => {
+          let currentMarker = wish.toJSON()
           this.mapData.latitude = 0
           this.$apply()
           this.mapData.latitude = currentMarker.geo.latitude
@@ -123,13 +121,12 @@
           this.currentMarker = currentMarker
           this.showDesc = true
           this.$apply()
-        }
+        })
       },
       mapTap() {
         this.showDesc = false
         this.$apply()
       }
-
     }
     onLoad (query) {
       if (query.type) {
@@ -139,23 +136,26 @@
       this.initMarker()
     }
     initMarker() {
-      testData.forEach((element) => {
-        let marker = {
-          id: element.id,
-          latitude: element.geo.latitude,
-          longitude: element.geo.longitude,
-          wish_type: element.wish_type
-        }
-        if (element.statu === '待解决') {
-          marker.iconPath = '/static/img/icon_heart_white.png'
-        } else if (element.statu === '解决中') {
-          marker.iconPath = '/static/img/icon_heart.png'
-        } else {
-          return null
-        }
-        this.mapData.markers.push(marker)
+      new AV.Query('wish').find().then((wish) => {
+        wish.map((w) => {
+          let element = w.toJSON()
+          let marker = {
+            id: element.objectId,
+            latitude: element.geo.latitude,
+            longitude: element.geo.longitude,
+            wish_type: element.wish_type
+          }
+          if (element.statu === '待解决') {
+            marker.iconPath = '/static/img/icon_heart_white.png'
+          } else if (element.statu === '解决中') {
+            marker.iconPath = '/static/img/icon_heart.png'
+          } else {
+            return null
+          }
+          this.mapData.markers.push(marker)
+        })
+        this.$apply()
       })
-      this.$apply()
     }
     setCurrentLocation () {
       wepy.getLocation({

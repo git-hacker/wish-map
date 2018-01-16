@@ -50,7 +50,12 @@ page {
     }
 
     globalData = {
-      userInfo: null
+      userInfo: null,
+      appid: 'wx583743371444acdb',
+      secret: '3b2854dce7fdfeea7cab9e61ee4063c1',
+      openId: null,
+      sessionKey: null,
+      user: null
     }
 
     constructor () {
@@ -60,6 +65,21 @@ page {
 
     onLaunch() {
       this.testAsync()
+
+      AV.User.loginWithWeapp().then(user => {
+        this.globalData.user = user.toJSON()
+        this.globalData.openId = this.globalData.user.authData.lc_weapp.openid
+        this.globalData.sessionKey = this.globalData.user.authData.lc_weapp.session_key
+        console.log(this.globalData.user)
+        console.log(this.globalData.openId)
+        console.log(this.globalData.sessionKey)
+      }).catch(console.error)
+
+      wepy.getUserInfo({
+        success: (res) => {
+          this.globalData.userInfo = res.userInfo
+        }
+      })
     }
 
     sleep (s) {

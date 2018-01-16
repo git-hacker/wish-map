@@ -20,6 +20,7 @@
 
 <script>
   import wepy from 'wepy'
+  const AV = require('../static/js/av-weapp-min.js')
 
   export default class Solution extends wepy.page {
     config = {
@@ -28,15 +29,28 @@
     components = {
     }
     data = {
+      wishId: null
     }
     computed = {
     }
     methods = {
-      bindFormSubmit () {
+      bindFormSubmit (e) {
+        let data = e.detail.value
+        let wish = AV.Object.createWithoutData('wish', this.wishId)
+        wish.addUnique('solutions', {
+          'solution_desc': data.textarea,
+          'is_choose': false,
+          'solution_user': this.$parent.globalData.openId
+        })
+        wish.save()
+
         wepy.navigateTo({
           url: '/pages/checksolution'
         })
       }
+    }
+    onLoad(query) {
+      this.wishId = query.wishId
     }
   }
 </script>

@@ -4,7 +4,7 @@
       <image src="{{currentWish.img_urls[0]}}"/>
     </view>
     <view class="weui-article">
-      <view class="weui-article__h1">  
+      <view class="weui-article__h1">
         {{currentWish.wish_title}}
         <view class="weui-badge" style="margin-left: .1rem; background-color:#808080;">{{currentWish.statu}}</view>
       </view>
@@ -36,7 +36,8 @@
 
 <script>
   import wepy from 'wepy'
-  import testData from '../components/data'
+  const AV = require('../static/js/av-weapp-min.js')
+
   export default class Wishdetail extends wepy.page {
     config = {
       navigationBarTitleText: '心愿详情'
@@ -48,11 +49,16 @@
     methods = {
       starPlus () {
         this.currentWish.stars++
+
+        let wish = AV.Object.createWithoutData('wish', this.currentWish.objectId)
+        wish.set('stars', this.currentWish.stars)
+        wish.save()
+
         this.$apply()
       },
       submitSolution(e) {
         wepy.navigateTo({
-          url: '/pages/solution'
+          url: `/pages/solution?wishId=${this.currentWish.objectId}`
         })
       },
       joinSolution(e) {
@@ -62,12 +68,15 @@
       }
     }
     onLoad(query) {
-      let currentWish = testData.find((element) => {
-        return element.id.toString() === query.wishId
-      })
-      this.currentWish = currentWish
-      this.solution = currentWish.solutions.find((element) => {
-        return element.is_choose === true
+      console.log(query.wishId)
+      new AV.Query('wish').get(query.wishId).then((wish) => {
+        console.log(wish)
+        console.log(wish.toJSON())
+        this.currentWish = wish.toJSON()
+        this.solution = this.currentWish.solutions.find((element) => {
+          return element.is_choose === true
+        })
+        this.$apply()
       })
     }
   }
