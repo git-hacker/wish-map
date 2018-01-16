@@ -29,6 +29,8 @@
 
 #### 演示发布心愿
 ![img](images/demo.gif)
+
+
 GIF 无法显示请查看 [Youku 视频](http://v.youku.com/v_show/id_XMzMyMzc0ODU2OA==.html)
 
 ## 框架
