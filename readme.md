@@ -27,6 +27,8 @@
 #### 个人中心
 ![img](images/profile.jpeg)
 
+#### 演示发布心愿
+[Youku 视频](http://v.youku.com/v_show/id_XMzMyMzc0ODU2OA==.html)
 
 ## 框架
 - wepy 1.6.0
